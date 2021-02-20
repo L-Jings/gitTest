@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{msg}},{{name}}</h1>
+        <h2>{{test}}</h2>
+        <h3>{{firstval}}</h3>
+        <button @click="handle">点击</button>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                msg:"hello",
+                name: "nike",
+                firstval: ""
+            },
+            methods: {
+                handle() {
+
+                    this.name = "hello";
+                },
+                other() {
+                    console.log("方法执行了")
+                    this.msg.split('').reverse().join('')
+                }
+            },
+            computed: {
+                test: {
+                    get() {
+                        return this.msg.split('').reverse().join('');
+                    },
+                    set(newVal) {
+                        this.firstval = newVal;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
